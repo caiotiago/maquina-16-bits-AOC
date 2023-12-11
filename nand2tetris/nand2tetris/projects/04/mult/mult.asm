@@ -8,3 +8,24 @@
 // (R0, R1, R2 refer to RAM[0], RAM[1], and RAM[2], respectively.)
 
 //// Replace this comment with your code.
+@0
+D=A
+@R2
+M=D
+(LOOP)
+@R1
+D=M
+@END
+D;JEQ
+@R0
+D=M
+@R2
+M=M+D
+@R1
+M=M-1
+D=M
+@LOOP
+D;JGT
+(END)
+@END
+0;JEQ
