@@ -13,14 +13,14 @@
 
 //// Replace this comment with your code.
 (CAIO)
-@KBD
-D=M
-@INGRID
-D;JEQ
 @8191
 D=A
 @i //variavel pra iterar sobre os bits da tela pra empretar
 M=D // i <- 8191
+@KBD
+D=M
+@INGRID
+D;JEQ
 (LOOP)
 @i // a <- endereço de i
 D=M // D <- 8191 ... 8190... 8189...
@@ -31,14 +31,10 @@ M=-1
 M=M-1 // decrementando o m pro loop acabar
 D=M
 @LOOP
-D;JLT
+D;JGE
 @CAIO
 0;JEQ
 (INGRID)
-@8191
-D=A
-@i //variavel pra iterar sobre os bits da tela pra empretar
-M=D // i <- 8191
 (LOOP)
 @i // a <- endereço de i
 D=M // D <- 8191 ... 8190... 8189...
@@ -49,6 +45,6 @@ M=0
 M=M-1 // decrementando o m pro loop acabar
 D=M
 @LOOP
-D;JLT
+D;JGE
 @CAIO
 0;JEQ
