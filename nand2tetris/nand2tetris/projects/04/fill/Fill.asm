@@ -12,43 +12,45 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 //// Replace this comment with your code.
+@8192
+D=A 
+@max
+M=D
+
 (CAIO)
-@KBD
-D=M
-@INGRID
-D;JEQ
-@8191
-D=A
-@i //variavel pra iterar sobre os bits da tela pra empretar
-M=D // i <- 8191
-(LOOP)
-@i // a <- endereço de i
-D=M // D <- 8191 ... 8190... 8189...
-@SCREEN 
-A=A+D //
-M=-1
-@i
-M=M-1 // decrementando o m pro loop acabar
-D=M
-@LOOP
-D;JLT
-@CAIO
-0;JEQ
-(INGRID)
-@8191
-D=A
-@i //variavel pra iterar sobre os bits da tela pra empretar
-M=D // i <- 8191
-(LOOP)
-@i // a <- endereço de i
-D=M // D <- 8191 ... 8190... 8189...
-@SCREEN 
-A=A+D //
-M=0
-@i
-M=M-1 // decrementando o m pro loop acabar
-D=M
-@LOOP
-D;JLT
-@CAIO
-0;JEQ
+    @i
+    M=0
+    @KBD 
+    D=M 
+    @BRANCO
+    D;JEQ
+    (PRETO)
+        @i
+        D=M 
+        @SCREEN 
+        A=A+D
+        M=-1
+        @max
+        D=M
+        @i
+        M=M+1
+        D=D-M
+        @PRETO
+        D;JGT
+    @CAIO
+    0;JMP
+    (BRANCO)
+        @i
+        D=M 
+        @SCREEN 
+        A=A+D
+        M=0
+        @max
+        D=M
+        @i
+        M=M+1
+        D=D-M
+        @BRANCO
+        D;JGT
+    @CAIO
+    0;JMP
